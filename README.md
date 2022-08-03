@@ -2,7 +2,7 @@
 By: `Scott Fitzpatrick`
 
 ## Description
-GloveYourself is an easy-to-use ~~Blazor WASM~~  ~~Feature-packed MVC~~ MVC application that matches a user with the optimum hand protection based on their specific needs and hand size.
+GloveYourself is an easy-to-use ~~Blazor WASM~~ <br /> ~~Feature-packed MVC~~ <br /> MVC application that matches a user with the optimum hand protection based on their specific needs and hand size.
 
 ## Target audience
 This app is perfect for anyone who needs help selecting the right glove for their project.
