@@ -5,7 +5,7 @@ using GloveYourself.Models.Glove;
 
 namespace GloveYourself.Services.Glove
 {
-    public class GloveService
+    public class GloveService : IGloveService
     {
         private readonly Guid _userId;
 

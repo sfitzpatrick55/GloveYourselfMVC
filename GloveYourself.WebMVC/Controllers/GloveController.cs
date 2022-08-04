@@ -6,6 +6,8 @@ using GloveYourself.Models.Glove;
 using GloveYourself.Services.Glove;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,12 +16,19 @@ namespace GloveYourself.WebMVC.Controllers
     [Authorize]
     public class GloveController : Controller
     {
+        private readonly IGloveService _gloveService;
+
+        public GloveController(IGloveService gloveService)
+        {
+            _gloveService = gloveService;
+        }
+
         //
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new GloveService(userId);
+            var service = CreateNoteService();
+
             var model = service.GetGloves();
 
             return View(model);
@@ -43,12 +52,21 @@ namespace GloveYourself.WebMVC.Controllers
                 return View(model);
             }
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new GloveService(userId);
+            var service = CreateNoteService();
 
             service.CreateGlove(model);
 
             return RedirectToAction("Index");
+        }
+
+        private GloveService CreateNoteService()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            var currentUserId = Guid.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var service = new GloveService(currentUserId, /* DbContext reference here */);
+
+            return service;
         }
     }
 }
