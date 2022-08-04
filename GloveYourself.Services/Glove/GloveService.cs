@@ -7,13 +7,12 @@ namespace GloveYourself.Services.Glove
 {
     public class GloveService : IGloveService
     {
-        private readonly Guid _userId;
+        private Guid _userId;
 
         private readonly ApplicationDbContext _context;
 
-        public GloveService(Guid userId, ApplicationDbContext context)
+        public GloveService(ApplicationDbContext context)
         {
-            _userId = userId;
             _context = context;
         }
 
@@ -71,6 +70,8 @@ namespace GloveYourself.Services.Glove
 
             return _context.SaveChanges() == 1;
         }
+
+        public void SetUserId(Guid userId) => _userId = userId;
     }
 }
 

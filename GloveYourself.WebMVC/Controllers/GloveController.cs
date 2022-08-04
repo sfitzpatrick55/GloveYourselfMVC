@@ -29,9 +29,9 @@ namespace GloveYourself.WebMVC.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var service = CreateGloveService();
+            if (!SetUserIdInService()) return Unauthorized();
 
-            var model = service.GetGloves();
+            var model = _gloveService.GetGloves();
 
             return View(model);
         }
@@ -51,9 +51,12 @@ namespace GloveYourself.WebMVC.Controllers
         {
             if (ModelState.IsValid) return View(model);
 
-            var service = CreateGloveService();
+            if (!SetUserIdInService()) return Unauthorized();
 
-            if (service.CreateGlove(model))
+            //var service = _gloveService.GetGloves();
+            //var service = CreateGloveService();
+
+            if (_gloveService.CreateGlove(model))
             {
                 TempData["SaveResult"] = "Your glove was successfully created.";
                 return RedirectToAction("Index");
@@ -65,28 +68,58 @@ namespace GloveYourself.WebMVC.Controllers
         }
 
         //
-        // GET: /glove/details
+        // GET: /glove/details/{id}
         public IActionResult Details(int id)
         {
-            var service = CreateGloveService();
-            var model = service.GetGloveById(id);
+            if (!SetUserIdInService()) return Unauthorized();
+
+            var model = _gloveService.GetGloveById(id);
+
+            //var service = CreateGloveService();
+            //var model = service.GetGloveById(id);
 
             return View(model);
         }
 
-        private GloveService CreateGloveService()
+        //
+        // GET: /glove/edit/{id}
+        public IActionResult Edit(int id)
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new GloveService(userId);
-            return service;
+            if (!SetUserIdInService()) return Unauthorized();
 
-            //ClaimsPrincipal currentUser = this.User;
+            var detail = _gloveService.GetGloveById(id);
 
-            //var currentUserId = Guid.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value);
+            //var service = CreateGloveService();
+            //var detail = service.GetGloveById(id);
 
-            //var service = new GloveService(currentUserId, _context);
+            var model = new GloveEdit
+            {
+                GloveId = detail.GloveId,
+                Title = detail.Title,
+                Brand = detail.Brand,
+                Description = detail.Description
+            };
 
-            //return service;
+            return View(model);
+        }
+
+        private Guid GetUserId()
+        {
+            var userIdClaim = User.Claims.First(i => i.Type == ClaimTypes.NameIdentifier).Value;
+
+            if (userIdClaim == null) return default;
+
+            return Guid.Parse(userIdClaim);
+        }
+
+        private bool SetUserIdInService()
+        {
+            var userId = GetUserId();
+            if (userId == null) return false;
+
+            //if everything works from above...
+            _gloveService.SetUserId(userId);
+            return true;
         }
     }
 }

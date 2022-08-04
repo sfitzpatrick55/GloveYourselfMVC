@@ -9,5 +9,9 @@ namespace GloveYourself.Services.Glove
         IEnumerable<GloveListItem> GetGloves();
 
         GloveDetail GetGloveById(int id);
+
+        bool UpdateGlove(GloveEdit model);
+
+        void SetUserId(Guid userId);
     }
 }
