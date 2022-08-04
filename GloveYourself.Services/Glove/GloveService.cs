@@ -46,6 +46,31 @@ namespace GloveYourself.Services.Glove
 
             return query.ToArray();
         }
+
+        public GloveDetail GetGloveById(int id)
+        {
+            var entity = _context.Gloves.Single(g => g.GloveId == id && g.OwnerId == _userId);
+
+            return new GloveDetail
+            {
+                GloveId = entity.GloveId,
+                Title = entity.Title,
+                Brand = entity.Brand,
+                Description = entity.Description,
+                CreatedUtc = entity.CreatedUtc
+            };
+        }
+
+        public bool UpdateGlove(GloveEdit model)
+        {
+            var entity = _context.Gloves.Single(g => g.GloveId == model.GloveId && g.OwnerId == _userId);
+
+            entity.Title = model.Title;
+            entity.Brand = model.Brand;
+            entity.Description = model.Description;
+
+            return _context.SaveChanges() == 1;
+        }
     }
 }
 

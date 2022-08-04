@@ -7,5 +7,7 @@ namespace GloveYourself.Services.Glove
         bool CreateGlove(GloveCreate model);
 
         IEnumerable<GloveListItem> GetGloves();
+
+        GloveDetail GetGloveById(int id);
     }
 }

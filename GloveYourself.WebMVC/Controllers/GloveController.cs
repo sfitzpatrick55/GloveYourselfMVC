@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using GloveYourself.Data.Data;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,7 +29,7 @@ namespace GloveYourself.WebMVC.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var service = CreateNoteService();
+            var service = CreateGloveService();
 
             var model = service.GetGloves();
 
@@ -48,8 +50,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Create(GloveCreate model)
         {
             if (ModelState.IsValid) return View(model);
-            
-            var service = CreateNoteService();
+
+            var service = CreateGloveService();
 
             if (service.CreateGlove(model))
             {
@@ -62,14 +64,29 @@ namespace GloveYourself.WebMVC.Controllers
             return View(model);
         }
 
-        private GloveService CreateNoteService()
+        //
+        // GET: /glove/details
+        public IActionResult Details(int id)
         {
-            ClaimsPrincipal currentUser = this.User;
-            var currentUserId = Guid.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var service = CreateGloveService();
+            var model = service.GetGloveById(id);
 
-            var service = new GloveService(currentUserId, /* DbContext reference here */);
+            return View(model);
+        }
 
+        private GloveService CreateGloveService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GloveService(userId);
             return service;
+
+            //ClaimsPrincipal currentUser = this.User;
+
+            //var currentUserId = Guid.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            //var service = new GloveService(currentUserId, _context);
+
+            //return service;
         }
     }
 }
