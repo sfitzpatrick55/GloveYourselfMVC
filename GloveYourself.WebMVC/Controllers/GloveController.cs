@@ -47,16 +47,19 @@ namespace GloveYourself.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(GloveCreate model)
         {
-            if (ModelState.IsValid)
-            {
-                return View(model);
-            }
-
+            if (ModelState.IsValid) return View(model);
+            
             var service = CreateNoteService();
 
-            service.CreateGlove(model);
+            if (service.CreateGlove(model))
+            {
+                TempData["SaveResult"] = "Your glove was successfully created.";
+                return RedirectToAction("Index");
+            };
 
-            return RedirectToAction("Index");
+            ModelState.AddModelError("", "Sorry, your glove could not be created.");
+
+            return View(model);
         }
 
         private GloveService CreateNoteService()
