@@ -13,6 +13,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Glove\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
@@ -27,5 +28,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Glove\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GloveYourself.Models\GloveYourself.Models.csproj" />
+    <ProjectReference Include="..\GloveYourself.Data\GloveYourself.Data.csproj" />
   </ItemGroup>
 </Project>

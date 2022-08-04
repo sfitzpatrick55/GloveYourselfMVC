@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GloveYourself.Models.Glove;
+using GloveYourself.Services.Glove;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +18,11 @@ namespace GloveYourself.WebMVC.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var model = new GloveListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GloveService(userId);
+            var model = service.GetGloves();
 
-            return View();
+            return View(model);
         }
 
         //
@@ -27,6 +30,25 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        //
+        // POST: /glove/create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(GloveCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GloveService(userId);
+
+            service.CreateGlove(model);
+
+            return RedirectToAction("Index");
         }
     }
 }
