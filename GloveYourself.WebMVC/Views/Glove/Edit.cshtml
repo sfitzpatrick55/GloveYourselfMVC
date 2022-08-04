@@ -1,8 +1,10 @@
 @model GloveYourself.Models.Glove.GloveEdit
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit";
 }
+
+<h1>Edit</h1>
 
 <!DOCTYPE html>
 
@@ -19,11 +21,14 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @Html.HiddenFor(model => model.GloveId)
+
+            @*<div class="form-group">
                 <label asp-for="GloveId" class="control-label"></label>
                 <input asp-for="GloveId" class="form-control" />
                 <span asp-validation-for="GloveId" class="text-danger"></span>
-            </div>
+            </div>*@
+
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />

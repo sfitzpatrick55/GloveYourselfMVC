@@ -13,5 +13,7 @@ namespace GloveYourself.Services.Glove
         bool UpdateGlove(GloveEdit model);
 
         void SetUserId(Guid userId);
+
+        bool DeleteGlove(int gloveId);
     }
 }

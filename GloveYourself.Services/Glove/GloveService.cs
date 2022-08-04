@@ -71,6 +71,19 @@ namespace GloveYourself.Services.Glove
             return _context.SaveChanges() == 1;
         }
 
+        public bool DeleteGlove(int gloveId)
+        {
+            var entity = _context.Gloves.Single(g => g.GloveId == gloveId && g.OwnerId == _userId);
+
+            _context.Gloves.Remove(entity);
+
+            return _context.SaveChanges() == 1;
+        }
+
+
+        //
+        // Helpers
+
         public void SetUserId(Guid userId) => _userId = userId;
     }
 }
