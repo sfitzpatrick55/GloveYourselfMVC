@@ -19,11 +19,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
-
 //
 // Add dependency injection items.
 builder.Services.AddScoped<IGloveService, GloveService>();
+
+var app = builder.Build();
+
 
 //
 // Configure the HTTP request pipeline.
