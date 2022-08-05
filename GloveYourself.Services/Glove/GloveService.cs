@@ -62,7 +62,7 @@ namespace GloveYourself.Services.Glove
 
         public bool UpdateGlove(GloveEdit model)
         {
-            var entity = _context.Gloves.Single(g => g.GloveId == model.GloveId && g.OwnerId == _userId);
+            var entity = _context.Gloves.FirstOrDefault(g => g.GloveId == model.GloveId && g.OwnerId == _userId);
 
             entity.Title = model.Title;
             entity.Brand = model.Brand;
@@ -73,7 +73,7 @@ namespace GloveYourself.Services.Glove
 
         public bool DeleteGlove(int gloveId)
         {
-            var entity = _context.Gloves.Single(g => g.GloveId == gloveId && g.OwnerId == _userId);
+            var entity = _context.Gloves.FirstOrDefault(g => g.GloveId == gloveId && g.OwnerId == _userId);
 
             _context.Gloves.Remove(entity);
 

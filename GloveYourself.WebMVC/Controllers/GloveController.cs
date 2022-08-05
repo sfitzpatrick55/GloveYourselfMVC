@@ -11,8 +11,6 @@ using System.Security.Claims;
 using GloveYourself.Data.Data;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace GloveYourself.WebMVC.Controllers
 {
     [Authorize]
@@ -135,6 +133,7 @@ namespace GloveYourself.WebMVC.Controllers
 
         //
         // GET: /glove/delete/{id}
+        [ActionName("Delete")]
         public IActionResult Delete(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
@@ -150,12 +149,13 @@ namespace GloveYourself.WebMVC.Controllers
         //
         // POST /glove/delete/{id}
         [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            //var model = _gloveService.GetGloveById(id);
+            //_gloveService.GetGloveById(id);
 
             _gloveService.DeleteGlove(id);
 
@@ -187,4 +187,3 @@ namespace GloveYourself.WebMVC.Controllers
         }
     }
 }
-
