@@ -4,7 +4,7 @@
     ViewData["Title"] = "Gloves";
 }
 
-<h1>All Gloves</h1>
+<h1>Gloves</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 <div class="form-group">
@@ -12,32 +12,24 @@
 </div>
 <br />
 
-@*@if (Model == null)
-{
-    <p><em>Loading...</em></p>
-}
-else if (Model.Count<GloveIndex>)
-{
-    <p><em>No Records Found.</em></p>
-}
-else
-{*@
 <div class="card-container">
     @foreach (var glove in Model)
     {
-        <div class="row">
+        <div class="card-container">
             <div class="col-sm-6">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         @*<img class="card-img-top" src="@glove.Image" alt="@glove.Title" />*@
                         <h3 class="card-title">@glove.Title</h3>
-                        <h4 class="card-title">@glove.Brand</h4>
+                        <h4 class="card-text">@glove.Brand</h4>
                         <h5 class="card-text">@glove.Description</h5>
-                        <h6 class="card-text">Perfect for:</h6>
+                        @*<h6 class="card-text">Perfect for:</h6>*@
                         @*<h5 class="card-text">@glove.UserTask</h5>*@
                         @*<h6 class="card-text">@glove.GloveSizes</h6>*@
                         <a class="btn btn-info" href="glove/edit/@glove.GloveId">Edit</a>
                         <a class="btn btn-danger" href="glove/delete/@glove.GloveId">Delete</a>
+                        <br />
+                        <h6 class="card-text">Created @glove.CreatedUtc.DateTime</h6>
                     </div>
                 </div>
             </div>

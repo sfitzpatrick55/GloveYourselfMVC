@@ -38,6 +38,8 @@ namespace GloveYourself.Services.Glove
                 {
                     GloveId = g.GloveId,
                     Title = g.Title,
+                    Brand = g.Brand,
+                    Description = g.Description,
                     CreatedUtc = g.CreatedUtc
                 }
             );
