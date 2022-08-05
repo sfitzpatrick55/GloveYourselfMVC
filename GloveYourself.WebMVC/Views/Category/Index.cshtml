@@ -1,39 +1,44 @@
-﻿@model IEnumerable<GloveYourself.Models.Glove.GloveListItem>
+﻿@model IEnumerable<GloveYourself.Models.Category.CategoryListItem>
 
 @{
-    ViewData["Title"] = "Gloves";
+    ViewData["Title"] = "Categories";
 }
 
-<h3>Gloves</h3>
+<h3>Categories</h3>
 
 <hr />
 
 @*<p>Extra heading can go here</p>*@
 
 <div class="form-group">
-    <a class="btn btn-success" href="glove/create"><i class="oi oi-plus"></i> Create New</a>
+    <a class="btn btn-success" href="category/create"><i class="oi oi-plus"></i> Create New</a>
 </div>
 <br />
 
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SaveResult"]
+    </div>
+}
 <div class="card-container">
-    @foreach (var glove in Model)
+    @foreach (var category in Model)
     {
         <div class="card-container">
             <div class="col-sm-6">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        @*<img class="card-img-top" src="@glove.Image" alt="@glove.Title" />*@
-                        <h3 class="card-title">@glove.Title</h3>
-                        <h4 class="card-text">@glove.Brand</h4>
-                        <h6 class="card-text">@glove.Description</h6>
-                        @*<h6 class="card-text">Perfect for:</h6>*@
-                        @*<h5 class="card-text">@glove.UserTask</h5>*@
-                        @*<h6 class="card-text">@glove.GloveSizes</h6>*@
-                        <a class="btn btn-info" href="glove/details/@glove.GloveId">Details</a>
-                        <a class="btn btn-warning" href="glove/edit/@glove.GloveId">Edit</a>
-                        <a class="btn btn-danger" href="glove/delete/@glove.GloveId">Delete</a>
+
+                        <h3 class="card-title">@category.CategoryName</h3>
+
+                        <h6 class="card-text">@category.Description</h6>
                         <br />
-                        <h6 class="card-text">Created @glove.CreatedUtc.DateTime</h6>
+                        <a class="btn btn-info" href="category/details/@category.CategoryId">Details</a>
+                        <a class="btn btn-warning" href="category/edit/@category.CategoryId">Edit</a>
+                        <a class="btn btn-danger" href="category/delete/@category.CategoryId">Delete</a>
+                        <br />
+                        <br />
+                        <h6 class="card-text">Created @category.CreatedUtc.DateTime</h6>
                     </div>
                 </div>
             </div>

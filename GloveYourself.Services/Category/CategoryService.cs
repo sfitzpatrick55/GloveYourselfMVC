@@ -37,6 +37,7 @@ namespace GloveYourself.Services.Category
                 {
                     CategoryId = c.CategoryId,
                     CategoryName = c.CategoryName,
+                    Description = c.Description,
                     CreatedUtc = c.CreatedUtc
                 }
             );

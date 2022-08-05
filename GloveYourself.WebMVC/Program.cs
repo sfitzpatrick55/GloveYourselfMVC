@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using GloveYourself.Data.Data;
 using GloveYourself.Services.Glove;
+using GloveYourself.Services.Category;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddControllersWithViews();
 //
 // Add dependency injection items.
 builder.Services.AddScoped<IGloveService, GloveService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

@@ -1,10 +1,10 @@
-@model GloveYourself.Models.Glove.GloveEdit
+@model GloveYourself.Models.Category.CategoryEdit
 
 @{
-    ViewData["Title"] = "Edit Glove";
+    ViewData["Title"] = "Edit Category";
 }
 
-<h3>Edit @Html.DisplayFor(model => model.Title)</h3>
+<h3>Edit @Html.DisplayFor(model => model.CategoryName)</h3>
 
 <hr />
 
@@ -15,17 +15,12 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @Html.HiddenFor(model => model.GloveId)
+            @Html.HiddenFor(model => model.CategoryId)
 
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
-                <span asp-validation-for="Brand" class="text-danger"></span>
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>

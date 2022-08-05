@@ -8,6 +8,8 @@ namespace GloveYourself.Models.Category
 
         public string CategoryName { get; set; }
 
+        public string Description { get; set; }
+
         [Display(Name="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }

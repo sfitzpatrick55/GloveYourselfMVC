@@ -1,38 +1,32 @@
-@model GloveYourself.Models.Glove.GloveDetail
+@model GloveYourself.Models.Category.CategoryDetail
 
 @{
-    ViewData["Title"] = "Edit Glove";
-    var id = Model.GloveId;
+    ViewData["Title"] = "Category Details";
+    var id = Model.CategoryId;
 }
 
-<h3>Details for @Html.DisplayFor(model => model.Title)</h3>
+<h3>Details for @Html.DisplayFor(model => model.CategoryName)</h3>
 
 <hr />
 
 @*<div class="form-group">
-    <a class="btn btn-success" href="glove/edit/@id"> Edit</a>
+    <a class="btn btn-success" href="category/edit/@id"> Edit</a>
 </div>
 <br />*@
 
 <div>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GloveId)
+            @Html.DisplayNameFor(model => model.CategoryId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GloveId)
+            @Html.DisplayFor(model => model.CategoryId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand)
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -49,6 +43,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GloveId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
     @Html.ActionLink("Back to List", "Index")
 </div>

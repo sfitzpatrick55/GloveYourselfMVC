@@ -6,6 +6,7 @@ namespace GloveYourself.Models.Category
     {
         public int CategoryId { get; set; }
 
+        [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
         public string Description { get; set; }
