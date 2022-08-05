@@ -1,58 +1,46 @@
 ﻿@model IEnumerable<GloveYourself.Models.Glove.GloveListItem>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Gloves";
 }
 
-<h1>Index</h1>
+<h1>All Gloves</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<p>This component demonstrates fetching data from the server.</p>
+<div class="form-group">
+    <a class="btn btn-success" href="glove/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br />
 
-@if (TempData.ContainsKey("SaveResult"))
+@*@if (Model == null)
 {
-    <div class="alert alert-success fade-in" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
+    <p><em>Loading...</em></p>
 }
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.GloveId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedUtc)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GloveId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedUtc)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.GloveId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.GloveId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.GloveId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+else if (Model.Count<GloveIndex>)
+{
+    <p><em>No Records Found.</em></p>
+}
+else
+{*@
+<div class="card-container">
+    @foreach (var glove in Model)
+    {
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        @*<img class="card-img-top" src="@glove.Image" alt="@glove.Title" />*@
+                        <h3 class="card-title">@glove.Title</h3>
+                        <h4 class="card-title">@glove.Brand</h4>
+                        <h5 class="card-text">@glove.Description</h5>
+                        @*<h6 class="card-text">Perfect for:</h6>
+                        <h5 class="card-text">@glove.UserTask</h5>*@
+                        @*<h6 class="card-text">@glove.GloveSizes</h6>*@
+                        <a class="btn btn-info" href="glove/edit/@glove.GloveId">Edit</a>
+                        <a class="btn btn-danger" href="glove/delete/@glove.GloveId">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

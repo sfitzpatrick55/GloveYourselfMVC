@@ -1,5 +1,4 @@
-﻿using System;
-using GloveYourself.Data.Data;
+﻿using GloveYourself.Data.Data;
 using GloveYourself.Data.Models;
 using GloveYourself.Models.Glove;
 

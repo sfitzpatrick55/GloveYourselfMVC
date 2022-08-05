@@ -9,6 +9,10 @@ namespace GloveYourself.Models.Glove
 
         public string Title { get; set; }
 
+        public string Brand { get; set; }
+
+        public string Description { get; set; }
+
         [Display(Name="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }

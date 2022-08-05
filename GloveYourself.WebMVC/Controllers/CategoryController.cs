@@ -1,5 +1,5 @@
-﻿using GloveYourself.Models.Glove;
-using GloveYourself.Services.Glove;
+﻿using GloveYourself.Models.Category;
+using GloveYourself.Services.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -7,13 +7,13 @@ using System.Security.Claims;
 namespace GloveYourself.WebMVC.Controllers
 {
     [Authorize]
-    public class GloveController : Controller
+    public class CategoryController : Controller
     {
-        private readonly IGloveService _gloveService;
+        private readonly ICategoryService _categoryService;
 
-        public GloveController(IGloveService gloveService)
+        public CategoryController(ICategoryService categoryService)
         {
-            _gloveService = gloveService;
+            _categoryService = categoryService;
         }
 
         //
@@ -22,61 +22,60 @@ namespace GloveYourself.WebMVC.Controllers
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            var model = _gloveService.GetGloves();
+            var model = _categoryService.GetCategories();
 
             return View(model);
         }
 
         //
-        // GET: /glove/create
+        // GET: /category/create
         public IActionResult Create()
         {
             return View();
         }
 
         //
-        // POST: /glove/create
+        // POST: /category/create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(GloveCreate model)
+        public IActionResult Create(CategoryCreate model)
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            if (_gloveService.CreateGlove(model))
+            if (_categoryService.CreateCategory(model))
             {
-                TempData["SaveResult"] = "Your glove was successfully created.";
+                TempData["SaveResult"] = "Your category was successfully created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Sorry, your glove could not be created.");
+            ModelState.AddModelError("", "Sorry, your category could not be created.");
 
             return View(model);
         }
 
         //
-        // GET: /glove/details/{id}
+        // GET: /category/details/{id}
         public IActionResult Details(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            var model = _gloveService.GetGloveById(id);
+            var model = _categoryService.GetCategoryById(id);
 
             return View(model);
         }
 
         //
-        // GET: /glove/edit/{id}
+        // GET: /category/edit/{id}
         public IActionResult Edit(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            var detail = _gloveService.GetGloveById(id);
+            var detail = _categoryService.GetCategoryById(id);
 
-            var model = new GloveEdit
+            var model = new CategoryEdit
             {
-                GloveId = detail.GloveId,
-                Title = detail.Title,
-                Brand = detail.Brand,
+                CategoryId = detail.CategoryId,
+                CategoryName = detail.CategoryName,
                 Description = detail.Description
             };
 
@@ -84,14 +83,14 @@ namespace GloveYourself.WebMVC.Controllers
         }
 
         //
-        // POST: /glove/edit/{id}
+        // POST: /category/edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, GloveEdit model)
+        public IActionResult Edit(int id, CategoryEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.GloveId != id)
+            if (model.CategoryId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch!");
                 return View(model);
@@ -99,34 +98,34 @@ namespace GloveYourself.WebMVC.Controllers
 
             if (!SetUserIdInService()) return Unauthorized();
 
-            var detail = _gloveService.GetGloveById(id);
+            var detail = _categoryService.GetCategoryById(id);
 
-            if (_gloveService.UpdateGlove(model))
+            if (_categoryService.UpdateCategory(model))
             {
-                TempData["SaveResult"] = "Your glove was successfully updated.";
+                TempData["SaveResult"] = "Your category was successfully updated.";
 
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Sorry, your glove could not be updated.");
+            ModelState.AddModelError("", "Sorry, your category could not be updated.");
 
             return View(model);
         }
 
         //
-        // GET: /glove/delete/{id}
+        // GET: /category/delete/{id}
         [ActionName("Delete")]
         public IActionResult Delete(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            var model = _gloveService.GetGloveById(id);
+            var model = _categoryService.GetCategoryById(id);
 
             return View(model);
         }
 
         //
-        // POST /glove/delete/{id}
+        // POST /category/delete/{id}
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -134,9 +133,9 @@ namespace GloveYourself.WebMVC.Controllers
         {
             if (!SetUserIdInService()) return Unauthorized();
 
-            _gloveService.DeleteGlove(id);
+            _categoryService.DeleteCategory(id);
 
-            TempData["SaveResult"] = "Your glove was successfully deleted.";
+            TempData["SaveResult"] = "Your category was successfully deleted.";
 
             return RedirectToAction("Index");
         }
@@ -159,7 +158,7 @@ namespace GloveYourself.WebMVC.Controllers
             if (userId == null) return false;
 
             //if everything works from above...
-            _gloveService.SetUserId(userId);
+            _categoryService.SetUserId(userId);
             return true;
         }
     }
