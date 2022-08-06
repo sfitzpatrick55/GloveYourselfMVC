@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GloveYourself.Data.Models
@@ -18,6 +19,8 @@ namespace GloveYourself.Data.Models
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+
+        public virtual IEnumerable<GloveEntity> GloveEntities { get; set; } // one to many
     }
 }
 
