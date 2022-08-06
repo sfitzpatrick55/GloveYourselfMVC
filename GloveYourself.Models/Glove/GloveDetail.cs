@@ -13,8 +13,15 @@ namespace GloveYourself.Models.Glove
 
         public string Description { get; set; }
 
+        //[Display(Name = "Category")]
+        //public int CategoryId { get; set; }
+
         [Display(Name= "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+
+        //public CategoryEntity CategoryEntity { get; set; }
+
+        public string Category { get; set; }
     }
 }
 

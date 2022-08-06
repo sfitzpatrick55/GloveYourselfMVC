@@ -1,4 +1,5 @@
-﻿using GloveYourself.Models.Glove;
+﻿using GloveYourself.Models.Category;
+using GloveYourself.Models.Glove;
 
 namespace GloveYourself.Services.Glove
 {
@@ -15,5 +16,7 @@ namespace GloveYourself.Services.Glove
         bool DeleteGlove(int gloveId);
 
         void SetUserId(Guid userId);
+
+        IEnumerable<CategoryListItem> CreateCategoryDropDownList();
     }
 }

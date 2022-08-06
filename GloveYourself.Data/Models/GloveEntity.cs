@@ -26,7 +26,7 @@ namespace GloveYourself.Data.Models
 
         [ForeignKey(nameof(CategoryEntity))]
         public int CategoryId { get; set; }
-        public CategoryEntity CategoryEntity { get; set; } // one to one
+        public virtual CategoryEntity CategoryEntity { get; set; } // one to one
     }
 }
 

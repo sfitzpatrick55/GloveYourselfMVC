@@ -1,6 +1,9 @@
 ﻿using GloveYourself.Data.Data;
 using GloveYourself.Data.Models;
+using GloveYourself.Models.Category;
 using GloveYourself.Models.Glove;
+using GloveYourself.Services.Category;
+using Microsoft.EntityFrameworkCore;
 
 namespace GloveYourself.Services.Glove
 {
@@ -23,6 +26,7 @@ namespace GloveYourself.Services.Glove
                 Title = model.Title,
                 Brand = model.Brand,
                 Description = model.Description,
+                CategoryId = model.CategoryId,
                 CreatedUtc = DateTimeOffset.Now
             };
 
@@ -40,7 +44,9 @@ namespace GloveYourself.Services.Glove
                     Title = g.Title,
                     Brand = g.Brand,
                     Description = g.Description,
-                    CreatedUtc = g.CreatedUtc
+                    //CategoryId = g.CategoryId,
+                    CreatedUtc = g.CreatedUtc,
+                    Category = g.CategoryEntity.CategoryName
                 }
             );
 
@@ -49,7 +55,9 @@ namespace GloveYourself.Services.Glove
 
         public GloveDetail GetGloveById(int id)
         {
-            var entity = _context.Gloves.Single(g => g.GloveId == id && g.OwnerId == _userId);
+            var entity = _context.Gloves
+                .Include(g => g.CategoryEntity)
+                .Single(g => g.GloveId == id && g.OwnerId == _userId);
 
             return new GloveDetail
             {
@@ -57,7 +65,10 @@ namespace GloveYourself.Services.Glove
                 Title = entity.Title,
                 Brand = entity.Brand,
                 Description = entity.Description,
-                CreatedUtc = entity.CreatedUtc
+                //CategoryId = entity.CategoryId,
+                CreatedUtc = entity.CreatedUtc,
+                //CategoryEntity = entity.CategoryEntity
+                Category = entity.CategoryEntity.CategoryName
             };
         }
 
@@ -68,6 +79,7 @@ namespace GloveYourself.Services.Glove
             entity.Title = model.Title;
             entity.Brand = model.Brand;
             entity.Description = model.Description;
+            entity.CategoryId = model.CategoryId;
 
             return _context.SaveChanges() == 1;
         }
@@ -86,6 +98,18 @@ namespace GloveYourself.Services.Glove
         // Helpers
 
         public void SetUserId(Guid userId) => _userId = userId;
+
+
+        public IEnumerable<CategoryListItem> CreateCategoryDropDownList()
+        {
+            var categoryService = new CategoryService(_context);
+
+            categoryService.SetUserId(_userId);
+
+            var categories = categoryService.GetCategories();
+
+            return categories;
+        }
     }
 }
 

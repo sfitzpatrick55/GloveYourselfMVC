@@ -1,7 +1,9 @@
-﻿using GloveYourself.Models.Glove;
+﻿using GloveYourself.Models.Category;
+using GloveYourself.Models.Glove;
 using GloveYourself.Services.Glove;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 
 namespace GloveYourself.WebMVC.Controllers
@@ -31,6 +33,8 @@ namespace GloveYourself.WebMVC.Controllers
         // GET: /glove/create
         public IActionResult Create()
         {
+            ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
+
             return View();
         }
 
@@ -41,6 +45,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Create(GloveCreate model)
         {
             if (!SetUserIdInService()) return Unauthorized();
+
+            ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
 
             if (_gloveService.CreateGlove(model))
             {
@@ -70,6 +76,8 @@ namespace GloveYourself.WebMVC.Controllers
         {
             if (!SetUserIdInService()) return Unauthorized();
 
+            ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
+
             var detail = _gloveService.GetGloveById(id);
 
             var model = new GloveEdit
@@ -89,6 +97,8 @@ namespace GloveYourself.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, GloveEdit model)
         {
+            ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName", model.CategoryId);
+
             if (!ModelState.IsValid) return View(model);
 
             if (model.GloveId != id)
@@ -161,6 +171,13 @@ namespace GloveYourself.WebMVC.Controllers
             //if everything works from above...
             _gloveService.SetUserId(userId);
             return true;
+        }
+
+        private IEnumerable<CategoryListItem> GetCategoryDropDownList()
+        {
+            if (!SetUserIdInService()) return default;
+
+            return _gloveService.CreateCategoryDropDownList();
         }
     }
 }

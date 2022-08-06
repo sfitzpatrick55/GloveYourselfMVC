@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace GloveYourself.Models.Glove
 {
     public class GloveEdit
@@ -10,6 +12,9 @@ namespace GloveYourself.Models.Glove
         public string Brand { get; set; }
 
         public string Description { get; set; }
+
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
     }
 }
 
