@@ -1,11 +1,11 @@
-@model GloveYourself.Models.Category.CategoryDetail
+@model GloveYourself.Models.Task.TaskDetail
 
 @{
-    ViewData["Title"] = "Category Details";
-    var id = Model.CategoryId;
+    ViewData["Title"] = "Task Details";
+    var id = Model.TaskId;
 }
 
-<h3>Details for @Html.DisplayFor(model => model.CategoryName)</h3>
+<h3>Details for @Html.DisplayFor(model => model.TaskName)</h3>
 
 <hr />
 
@@ -17,22 +17,16 @@
 <div>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.TaskId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.TaskId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryName)
+            @Html.DisplayNameFor(model => model.TaskName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.TaskName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedUtc)
@@ -43,6 +37,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaskId }) |
     @Html.ActionLink("Back to List", "Index")
 </div>

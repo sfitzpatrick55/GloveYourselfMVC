@@ -1,28 +1,23 @@
-@model GloveYourself.Models.Category.CategoryCreate
+@model GloveYourself.Models.Task.TaskCreate
 
 @{
-    ViewData["Title"] = "Create Category";
+    ViewData["Title"] = "Create Task";
 }
 
-<h3>Create a Category</h3>
+<h3>Create a Task</h3>
 
 <hr />
 
-<p>Please enter category information below.</p>
+<p>Please enter task information below.</p>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CategoryName" class="control-label"></label>
-                <input asp-for="CategoryName" class="form-control" />
-                <span asp-validation-for="CategoryName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="TaskName" class="control-label"></label>
+                <input asp-for="TaskName" class="form-control" />
+                <span asp-validation-for="TaskName" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
