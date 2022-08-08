@@ -31,7 +31,7 @@ namespace GloveYourself.Services.Task
 
         public IEnumerable<TaskListItem> GetTasks()
         {
-            var query = _context.Tasks.Where(t => t.OwnerId == _userId)
+            var query = _context.Tasks
                 .OrderBy(t => t.TaskName)
                 .Select(t => new TaskListItem
                 {
@@ -48,7 +48,7 @@ namespace GloveYourself.Services.Task
         {
             var entity = _context.Tasks
                 .OrderBy(t => t.TaskName)
-                .Single(t => t.TaskId == id && t.OwnerId == _userId);
+                .Single(t => t.TaskId == id);
 
             return new TaskDetail
             {
@@ -60,7 +60,7 @@ namespace GloveYourself.Services.Task
 
         public bool UpdateTask(TaskEdit model)
         {
-            var entity = _context.Tasks.FirstOrDefault(t => t.TaskId == model.TaskId && t.OwnerId == _userId);
+            var entity = _context.Tasks.FirstOrDefault(t => t.TaskId == model.TaskId);
 
             entity.TaskName = model.TaskName;
 
@@ -69,7 +69,7 @@ namespace GloveYourself.Services.Task
 
         public bool DeleteTask(int taskId)
         {
-            var entity = _context.Tasks.FirstOrDefault(t => t.TaskId == taskId && t.OwnerId == _userId);
+            var entity = _context.Tasks.FirstOrDefault(t => t.TaskId == taskId);
 
             _context.Tasks.Remove(entity);
 

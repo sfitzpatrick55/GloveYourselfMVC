@@ -1,4 +1,5 @@
 ﻿using GloveYourself.Models.Task;
+using GloveYourself.Services.SeedData;
 using GloveYourself.Services.Task;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace GloveYourself.WebMVC.Controllers
     public class TaskController : Controller
     {
         private readonly ITaskService _taskService;
+        private readonly ISeedDataService _seedDataService; 
 
-        public TaskController(ITaskService taskService)
+        public TaskController(ITaskService taskService, ISeedDataService seedDataService)
         {
             _taskService = taskService;
+            _seedDataService = seedDataService;
         }
 
         //
@@ -21,6 +24,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Index()
         {
             if (!SetUserIdInService()) return Unauthorized();
+
+            _seedDataService.SeedTasks(); // Calls method to check if Tasks table in Db is empty, if so, seed data
 
             var model = _taskService.GetTasks();
 
@@ -58,6 +63,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Details(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
+
+            _seedDataService.SeedTasks(); // Calls method to check if Tasks table in Db is empty, if so, seed data
 
             var model = _taskService.GetTaskById(id);
 

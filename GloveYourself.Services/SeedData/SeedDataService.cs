@@ -86,117 +86,84 @@ namespace GloveYourself.Services.SeedData
             }
         }
 
-        //public async Task<bool> SeedUserProfilesAsync()
-        //{
-        //    int userCount = _context.UserProfile.Count();
-        //    if (userCount == 0)
-        //    {
-        //        var firstUser = new UserProfileRegister()
-        //        {
-        //            Username = "UserOne",
-        //            Password = "UserOnePassword",
-        //            ConfirmPassword = "UserOnePassword",
-        //            CookingExperienceLevel = "Low",
-        //            FirstName = "User",
-        //            LastName = "One",
-        //            FavoriteFood = "Escargot"
-        //        };
+        public async Task<bool> SeedTasks()
+        {
+            var _taskService = new TaskService(_context);
 
-        //        var secondUser = new UserProfileRegister()
-        //        {
-        //            Username = "UserTwo",
-        //            Password = "UserTwoPassword",
-        //            ConfirmPassword = "UserTwoPassword",
-        //            CookingExperienceLevel = "High",
-        //            FirstName = "User",
-        //            LastName = "Two",
-        //            FavoriteFood = "Onions"
-        //        };
+            int items = _context.Tasks.Count();
+            if (items == 0)
+            {
+                var painting = new TaskCreate()
+                {
+                    TaskName = "Painting",
+                };
 
-        //        var thirdUser = new UserProfileRegister()
-        //        {
-        //            Username = "UserThree",
-        //            Password = "UserThreePassword",
-        //            ConfirmPassword = "UserThreePassword",
-        //            CookingExperienceLevel = "Medium",
-        //            FirstName = "User",
-        //            LastName = "Three",
-        //            FavoriteFood = "Pizza with or without Pineapple"
-        //        };
+                var plumbing = new TaskCreate()
+                {
+                    TaskName = "Plumbing",
+                };
 
-        //        await _userProfile.RegisterUserProfileAsync(firstUser);
-        //        await _userProfile.RegisterUserProfileAsync(secondUser);
-        //        await _userProfile.RegisterUserProfileAsync(thirdUser);
-        //        return true;
-        //    }
+                var patientExam = new TaskCreate()
+                {
+                    TaskName = "Patient Examination",
+                };
 
-        //    return false;
-        //}
+                var salon = new TaskCreate()
+                {
+                    TaskName = "Salon",
+                };
 
-        //public async Task<bool> SeedShoppingListAsync()
-        //{
-        //    int items = _context.ShoppingList.Count();
-        //    if (items == 0)
-        //    {
-        //        var firstShoppingList = new ShoppingListCreate()
-        //        {
-        //            IngredientName = "Avocado",
-        //            Amount = "4",
-        //        };
+                var coldStorage = new TaskCreate()
+                {
+                    TaskName = "Cold Storage",
+                };
 
-        //        var secondShoppingList = new ShoppingListCreate()
-        //        {
-        //            IngredientName = "Butter",
-        //        };
+                var construction = new TaskCreate()
+                {
+                    TaskName = "Construction",
+                };
 
-        //        var thirdShoppingList = new ShoppingListCreate()
-        //        {
-        //            IngredientName = "Kosher salt",
-        //        };
+                var demo = new TaskCreate()
+                {
+                    TaskName = "Demolition",
+                };
 
-        //        await _shoppingList.CreateShoppingListAsync(firstShoppingList);
-        //        await _shoppingList.CreateShoppingListAsync(secondShoppingList);
-        //        await _shoppingList.CreateShoppingListAsync(thirdShoppingList);
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+                var landscaping = new TaskCreate()
+                {
+                    TaskName = "Landscaping",
+                };
 
-        //public async Task<bool> SeedFavoritedRecipesAsync()
-        //{
-        //    int items = _context.FavoritedRecipes.Count();
-        //    if (items == 0)
-        //    {
-        //        var firstFavoritedRecipe = new FavoritedRecipesCreate()
-        //        {
-        //            UserId = 1005,
-        //            RecipeId = 4,
-        //        };
+                var firstResponders = new TaskCreate()
+                {
+                    TaskName = "First Responders",
+                };
 
-        //        var secondFavoritedRecipe = new FavoritedRecipesCreate()
-        //        {
-        //            UserId = 1006,
-        //            RecipeId = 9,
-        //        };
+                var heavyEquipment = new TaskCreate()
+                {
+                    TaskName = "Heavy Equipment",
+                };
 
-        //        var thirdFavoritedRecipe = new FavoritedRecipesCreate()
-        //        {
-        //            UserId = 1007,
-        //            RecipeId = 12,
-        //        };
+                var mechanics = new TaskCreate()
+                {
+                    TaskName = "Mechanics",
+                };
 
-        //        await _favoritedRecipe.CreateFavoritedRecipesAsync(firstFavoritedRecipe);
-        //        await _favoritedRecipe.CreateFavoritedRecipesAsync(secondFavoritedRecipe);
-        //        await _favoritedRecipe.CreateFavoritedRecipesAsync(thirdFavoritedRecipe);
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+                _taskService.CreateTask(painting);
+                _taskService.CreateTask(plumbing);
+                _taskService.CreateTask(patientExam);
+                _taskService.CreateTask(salon);
+                _taskService.CreateTask(coldStorage);
+                _taskService.CreateTask(construction);
+                _taskService.CreateTask(demo);
+                _taskService.CreateTask(landscaping);
+                _taskService.CreateTask(firstResponders);
+                _taskService.CreateTask(heavyEquipment);
+                return _taskService.CreateTask(mechanics);
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
