@@ -1,5 +1,6 @@
 ﻿using GloveYourself.Models.Category;
 using GloveYourself.Models.Glove;
+using GloveYourself.Models.Task;
 
 namespace GloveYourself.Services.Glove
 {
@@ -18,5 +19,7 @@ namespace GloveYourself.Services.Glove
         void SetUserId(Guid userId);
 
         IEnumerable<CategoryListItem> CreateCategoryDropDownList();
+
+        IEnumerable<TaskListItem> CreateTaskDropDownList();
     }
 }

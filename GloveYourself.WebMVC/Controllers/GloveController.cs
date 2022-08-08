@@ -1,5 +1,6 @@
 ﻿using GloveYourself.Models.Category;
 using GloveYourself.Models.Glove;
+using GloveYourself.Models.Task;
 using GloveYourself.Services.Glove;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,8 @@ namespace GloveYourself.WebMVC.Controllers
         {
             ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
 
+            ViewBag.TaskSelectList = new SelectList(GetTaskDropDownList(), "TaskId", "TaskName");
+
             return View();
         }
 
@@ -47,6 +50,8 @@ namespace GloveYourself.WebMVC.Controllers
             if (!SetUserIdInService()) return Unauthorized();
 
             ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
+
+            ViewBag.TaskSelectList = new SelectList(GetTaskDropDownList(), "TaskId", "TaskName");
 
             if (_gloveService.CreateGlove(model))
             {
@@ -78,6 +83,8 @@ namespace GloveYourself.WebMVC.Controllers
 
             ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName");
 
+            ViewBag.TaskSelectList = new SelectList(GetTaskDropDownList(), "TaskId", "TaskName");
+
             var detail = _gloveService.GetGloveById(id);
 
             var model = new GloveEdit
@@ -98,6 +105,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Edit(int id, GloveEdit model)
         {
             ViewBag.CategorySelectList = new SelectList(GetCategoryDropDownList(), "CategoryId", "CategoryName", model.CategoryId);
+
+            ViewBag.TaskSelectList = new SelectList(GetTaskDropDownList(), "TaskId", "TaskName");
 
             if (!ModelState.IsValid) return View(model);
 
@@ -178,6 +187,13 @@ namespace GloveYourself.WebMVC.Controllers
             if (!SetUserIdInService()) return default;
 
             return _gloveService.CreateCategoryDropDownList();
+        }
+
+        private IEnumerable<TaskListItem> GetTaskDropDownList()
+        {
+            if (!SetUserIdInService()) return default;
+
+            return _gloveService.CreateTaskDropDownList();
         }
     }
 }

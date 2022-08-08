@@ -1,5 +1,6 @@
 ﻿using GloveYourself.Models.Category;
 using GloveYourself.Services.Category;
+using GloveYourself.Services.SeedData;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -10,10 +11,12 @@ namespace GloveYourself.WebMVC.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
+        private readonly ISeedDataService _seedDataService;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, ISeedDataService seedDataService)
         {
             _categoryService = categoryService;
+            _seedDataService = seedDataService;
         }
 
         //
@@ -21,6 +24,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Index()
         {
             if (!SetUserIdInService()) return Unauthorized();
+
+            _seedDataService.SeedCategories(); // Calls method to check if Categories table in Db is empty, if so, seed data
 
             var model = _categoryService.GetCategories();
 
@@ -58,6 +63,8 @@ namespace GloveYourself.WebMVC.Controllers
         public IActionResult Details(int id)
         {
             if (!SetUserIdInService()) return Unauthorized();
+
+            _seedDataService.SeedCategories(); // Calls method to check if Categories table in Db is empty, if so, seed data
 
             var model = _categoryService.GetCategoryById(id);
 

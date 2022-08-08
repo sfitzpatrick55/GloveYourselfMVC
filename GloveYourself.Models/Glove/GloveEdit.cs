@@ -15,6 +15,9 @@ namespace GloveYourself.Models.Glove
 
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
+
+        [Display(Name = "Task")]
+        public int TaskId { get; set; }
     }
 }
 

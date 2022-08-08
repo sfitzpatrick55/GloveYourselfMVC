@@ -16,13 +16,5 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<CategoryEntity> Categories { get; set; }
 
     public DbSet <TaskEntity> Tasks { get; set; }
-
-    //protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    modelBuilder.Entity<GloveEntity>()
-    //        .HasOne(b => b.CategoryEntity)
-    //        .WithOne(i => i.GloveEntity)
-    //        .HasForeignKey<CategoryEntity>(b => b.GloveForeignKey);
-    //}
 }
 

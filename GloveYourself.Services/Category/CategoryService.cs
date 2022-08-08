@@ -32,7 +32,7 @@ namespace GloveYourself.Services.Category
 
         public IEnumerable<CategoryListItem> GetCategories()
         {
-            var query = _context.Categories.Where(c => c.OwnerId == _userId)
+            var query = _context.Categories
                 .OrderBy(c => c.CategoryName)
                 .Select(c => new CategoryListItem
                 {
@@ -50,7 +50,7 @@ namespace GloveYourself.Services.Category
         {
             var entity = _context.Categories
                 .OrderBy(c => c.CategoryName)
-                .Single(c => c.CategoryId == id && c.OwnerId == _userId);
+                .Single(c => c.CategoryId == id);
 
             return new CategoryDetail
             {
@@ -63,7 +63,7 @@ namespace GloveYourself.Services.Category
 
         public bool UpdateCategory(CategoryEdit model)
         {
-            var entity = _context.Categories.FirstOrDefault(c => c.CategoryId == model.CategoryId && c.OwnerId == _userId);
+            var entity = _context.Categories.FirstOrDefault(c => c.CategoryId == model.CategoryId);
 
             entity.CategoryName = model.CategoryName;
             entity.Description = model.Description;
@@ -73,7 +73,7 @@ namespace GloveYourself.Services.Category
 
         public bool DeleteCategory(int categoryId)
         {
-            var entity = _context.Categories.FirstOrDefault(c => c.CategoryId == categoryId && c.OwnerId == _userId);
+            var entity = _context.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
 
             _context.Categories.Remove(entity);
 

@@ -33,11 +33,9 @@
                         <h3 class="card-title">@glove.Title</h3>
                         <h4 class="card-text">@glove.Brand</h4>
                         <h6 class="card-text">@glove.Description</h6>
-                        <h6 class="card-text">@glove.Category</h6>
+                        <h6 class="card-text">Category: @glove.Category</h6>
 
-                        @*<h6 class="card-text">Perfect for:</h6>*@
-                        @*<h5 class="card-text">@glove.UserTask</h5>*@
-                        @*<h6 class="card-text">@glove.GloveSizes</h6>*@
+                        <h6 class="card-text">Perfect for: @glove.UserTask</h6>
                         <br />
                         <a asp-action="Details" asp-route-id=@glove.GloveId class="btn btn-info">Details</a>
                         <a asp-action="Edit" asp-route-id=@glove.GloveId class="btn btn-warning">Edit</a>

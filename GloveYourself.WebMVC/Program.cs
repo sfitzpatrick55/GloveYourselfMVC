@@ -4,6 +4,7 @@ using GloveYourself.Data.Data;
 using GloveYourself.Services.Glove;
 using GloveYourself.Services.Category;
 using GloveYourself.Services.Task;
+using GloveYourself.Services.SeedData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IGloveService, GloveService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<ISeedDataService, SeedDataService>();
 
 var app = builder.Build();
 

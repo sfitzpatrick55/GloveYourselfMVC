@@ -6,14 +6,14 @@ namespace GloveYourself.Services.Task
     {
         bool CreateTask(TaskCreate model);
 
-        bool DeleteTask(int taskId);
+        IEnumerable<TaskListItem> GetTasks();
 
         TaskDetail GetTaskById(int id);
 
-        IEnumerable<TaskListItem> GetTasks();
+        bool UpdateTask(TaskEdit model);
+
+        bool DeleteTask(int taskId);
 
         void SetUserId(Guid userId);
-
-        bool UpdateTask(TaskEdit model);
     }
 }
