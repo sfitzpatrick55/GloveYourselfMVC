@@ -32,6 +32,7 @@ namespace GloveYourself.Services.Task
         public IEnumerable<TaskListItem> GetTasks()
         {
             var query = _context.Tasks.Where(t => t.OwnerId == _userId)
+                .OrderBy(t => t.TaskName)
                 .Select(t => new TaskListItem
                 {
                     TaskId = t.TaskId,
@@ -45,7 +46,9 @@ namespace GloveYourself.Services.Task
 
         public TaskDetail GetTaskById(int id)
         {
-            var entity = _context.Tasks.Single(t => t.TaskId == id && t.OwnerId == _userId);
+            var entity = _context.Tasks
+                .OrderBy(t => t.TaskName)
+                .Single(t => t.TaskId == id && t.OwnerId == _userId);
 
             return new TaskDetail
             {

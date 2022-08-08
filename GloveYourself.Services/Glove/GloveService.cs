@@ -38,6 +38,7 @@ namespace GloveYourself.Services.Glove
         public IEnumerable<GloveListItem> GetGloves()
         {
             var query = _context.Gloves.Where(g => g.OwnerId == _userId)
+                .OrderBy(g => g.CategoryId)
                 .Select(g => new GloveListItem
                 {
                     GloveId = g.GloveId,
@@ -56,6 +57,7 @@ namespace GloveYourself.Services.Glove
         public GloveDetail GetGloveById(int id)
         {
             var entity = _context.Gloves
+                .OrderBy(g => g.CategoryId)
                 .Include(g => g.CategoryEntity)
                 .Single(g => g.GloveId == id && g.OwnerId == _userId);
 

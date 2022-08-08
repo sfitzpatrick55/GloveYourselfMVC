@@ -33,6 +33,7 @@ namespace GloveYourself.Services.Category
         public IEnumerable<CategoryListItem> GetCategories()
         {
             var query = _context.Categories.Where(c => c.OwnerId == _userId)
+                .OrderBy(c => c.CategoryName)
                 .Select(c => new CategoryListItem
                 {
                     CategoryId = c.CategoryId,
@@ -47,7 +48,9 @@ namespace GloveYourself.Services.Category
 
         public CategoryDetail GetCategoryById(int id)
         {
-            var entity = _context.Categories.Single(c => c.CategoryId == id && c.OwnerId == _userId);
+            var entity = _context.Categories
+                .OrderBy(c => c.CategoryName)
+                .Single(c => c.CategoryId == id && c.OwnerId == _userId);
 
             return new CategoryDetail
             {
