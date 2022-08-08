@@ -27,6 +27,8 @@ namespace GloveYourself.Data.Models
         [ForeignKey(nameof(CategoryEntity))]
         public int CategoryId { get; set; }
         public virtual CategoryEntity CategoryEntity { get; set; } // one to one
+
+        public virtual IEnumerable<TaskEntity> TaskEntities { get; set; } // one to many
     }
 }
 

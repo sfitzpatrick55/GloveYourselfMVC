@@ -15,10 +15,12 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Category\" />
+    <None Remove="Task\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Glove\" />
     <Folder Include="Category\" />
+    <Folder Include="Task\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
