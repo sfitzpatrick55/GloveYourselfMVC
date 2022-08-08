@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <None Remove="Areas\Identity\Data\" />
+    <None Remove="Views\Glove\" />
+    <None Remove="Views\Shared\DisplayTemplates\" />
+    <None Remove="Views\Category\" />
+    <None Remove="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -44,5 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Identity\Data\" />
+    <Folder Include="Views\Glove\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
+    <Folder Include="Views\Category\" />
+    <Folder Include="Views\Task\" />
   </ItemGroup>
 </Project>

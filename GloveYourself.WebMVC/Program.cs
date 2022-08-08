@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using GloveYourself.Data.Data;
+using GloveYourself.Services.Glove;
+using GloveYourself.Services.Category;
+using GloveYourself.Services.Task;
+using GloveYourself.Services.SeedData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +17,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
 
+//
+// Add dependency injection items.
+builder.Services.AddScoped<IGloveService, GloveService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<ISeedDataService, SeedDataService>();
+
 var app = builder.Build();
+
 
 //
 // Configure the HTTP request pipeline.

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GloveYourself.Models.Category.CategoryListItem>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h3>Categories</h3>
+
+<hr />
+
+@*<p>Extra heading can go here</p>*@
+
+<div class="form-group">
+    <a class="btn btn-success" href="category/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br />
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SaveResult"]
+    </div>
+}
+<div class="card-container">
+    @foreach (var category in Model)
+    {
+        <div class="card-container">
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+
+                        <h3 class="card-title">@category.CategoryName</h3>
+
+                        <h6 class="card-text">@category.Description</h6>
+                        <br />
+                        <a class="btn btn-info" href="category/details/@category.CategoryId">Details</a>
+                        <a class="btn btn-warning" href="category/edit/@category.CategoryId">Edit</a>
+                        <a class="btn btn-danger" href="category/delete/@category.CategoryId">Delete</a>
+                        <br />
+                        <br />
+                        <h6 class="card-text">Created @category.CreatedUtc.DateTime</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

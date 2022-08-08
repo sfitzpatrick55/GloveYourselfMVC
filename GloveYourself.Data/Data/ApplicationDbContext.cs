@@ -12,5 +12,9 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<GloveEntity> Gloves { get; set; }
+
+    public DbSet<CategoryEntity> Categories { get; set; }
+
+    public DbSet <TaskEntity> Tasks { get; set; }
 }
 

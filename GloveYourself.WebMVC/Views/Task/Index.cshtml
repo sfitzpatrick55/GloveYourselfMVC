@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GloveYourself.Models.Task.TaskListItem>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h3>Tasks</h3>
+
+<hr />
+
+@*<p>Extra heading can go here</p>*@
+
+<div class="form-group">
+    <a class="btn btn-success" href="task/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br />
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SaveResult"]
+    </div>
+}
+<div class="card-container">
+    @foreach (var task in Model)
+    {
+        <div class="card-container">
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+
+                        <h3 class="card-title">@task.TaskName</h3>
+                        <br />
+                        <a class="btn btn-info" href="task/details/@task.TaskId">Details</a>
+                        <a class="btn btn-warning" href="task/edit/@task.TaskId">Edit</a>
+                        <a class="btn btn-danger" href="task/delete/@task.TaskId">Delete</a>
+                        <br />
+                        <br />
+                        <h6 class="card-text">Created @task.CreatedUtc.DateTime</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

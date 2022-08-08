@@ -1,0 +1,55 @@
+﻿@model IEnumerable<GloveYourself.Models.Glove.GloveListItem>
+
+@{
+    ViewData["Title"] = "Gloves";
+}
+
+<h3>Gloves</h3>
+
+<hr />
+
+@*<p>Extra heading can go here</p>*@
+
+<div class="form-group">
+    <a class="btn btn-success" href="glove/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br />
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SaveResult"]
+    </div>
+}
+<div class="card-container">
+    @foreach (var glove in Model)
+    {
+        <div class="card-container">
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+
+                        @*<img class="card-img-top" src="@glove.Image" alt="@glove.Title" />*@
+                        <h3 class="card-title">@glove.Title</h3>
+                        <h4 class="card-text">@glove.Brand</h4>
+                        <h6 class="card-text">@glove.Description</h6>
+                        <h6 class="card-text">Category: @glove.Category</h6>
+
+                        <h6 class="card-text">Perfect for: @glove.UserTask</h6>
+                        <br />
+                        <a asp-action="Details" asp-route-id=@glove.GloveId class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id=@glove.GloveId class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id=@glove.GloveId class="btn btn-danger">Delete</a>
+
+                        @*<a class="btn btn-info" href="/Details/@glove.GloveId">Details</a>
+                        <a class="btn btn-warning" href="/Edit/@glove.GloveId">Edit</a>
+                        <a class="btn btn-danger" href="/Delete/@glove.GloveId">Delete</a>*@
+                        <br />
+                        <br />
+                        <h6 class="card-text">Created @glove.CreatedUtc.DateTime</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GloveYourself.Models.Glove
 {
-    public class GloveListItem
+    public class GloveDetail
     {
         public int GloveId { get; set; }
 
@@ -18,6 +18,7 @@ namespace GloveYourself.Models.Glove
 
         public string Category { get; set; }
 
+        [Display(Name = "Task")]
         public string UserTask { get; set; }
     }
 }

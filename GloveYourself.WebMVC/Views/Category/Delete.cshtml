@@ -1,0 +1,48 @@
+@model GloveYourself.Models.Category.CategoryDetail
+
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<h3>Delete @Html.DisplayFor(model => model.CategoryName)</h3>
+
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedUtc.DateTime)
+        </dd>
+    </dl>
+
+<p class="delete-confirm">Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</p>
+
+<form asp-action="Delete">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
