@@ -2,10 +2,10 @@
 
 @{
     ViewData["Title"] = "Category Details";
-    var id = Model.CategoryId;
+    @*var id = Model.CategoryId;*@
 }
 
-<h3>Details for @Html.DisplayFor(model => model.CategoryName)</h3>
+<h3 class="section-title">Details for @Html.DisplayFor(model => model.CategoryName)</h3>
 
 <hr />
 
@@ -42,7 +42,7 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="links">
     @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
     @Html.ActionLink("Back to List", "Index")
 </div>

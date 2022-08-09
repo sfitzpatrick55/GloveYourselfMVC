@@ -2,10 +2,10 @@
 
 @{
     ViewData["Title"] = "Glove Details";
-    var id = Model.GloveId;
+    @*var id = Model.GloveId;*@
 }
 
-<h3>Details for @Html.DisplayFor(model => model.Title)</h3>
+<h3 class="section-title">Details for @Html.DisplayFor(model => model.Title)</h3>
 
 <hr />
 
@@ -60,7 +60,7 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="links">
     @Html.ActionLink("Edit", "Edit", new { id = Model.GloveId }) |
     @Html.ActionLink("Back to List", "Index")
 </div>

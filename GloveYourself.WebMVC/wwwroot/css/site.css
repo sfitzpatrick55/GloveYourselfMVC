@@ -21,7 +21,8 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: left;
+    padding: 0.5em;
+    justify-content: center;
 }
 
 .navbar {
@@ -39,8 +40,9 @@ body {
 }
 
 .company-name {
-    font-size: 2em;
-    color: #0aa5e7;
+    font-family: 'BenchNine', sans-serif;
+    font-size: 2.2em;
+    color: #0fcaf0;
 }
 
 .footer {
@@ -52,5 +54,80 @@ body {
 }
 
 .footer-text img {
-    height: 1.5rem;
+    height: 1.2rem;
+}
+
+.pb-3 {
+    text-align: center;
+/*    color: darkgray;*/
+}
+
+.row {
+    justify-content: center;
+}
+
+.card {
+    border-radius: 10px;
+    border-color: darkgray;
+}
+
+.card-title {
+    color: #eb297a;
+    font-size: 1.5em;
+}
+
+.card-text-brand {
+    color: #fe7f41;
+    font-size: 1.2em;
+}
+
+.card-text-description {
+    text-align: left;
+    color: darkgray;
+    font-size: 0.8em;
+}
+
+.card-text-category {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.card-text-task {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.card-text-created {
+    font-size: 0.8em;
+    color: darkgray;
+}
+
+.control-label {
+    color: #eb297a;
+    font-size: 0.8rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.links a {
+    color: #eb297a;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: black;
+}
+
+.delete-confirm2 {
+    color: red;
+}
+
+.col-sm-10 {
+    text-align: left;
+}
+
+.col-sm-2 {
+    color: #eb297a;
 }

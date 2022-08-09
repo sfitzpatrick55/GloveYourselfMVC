@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete Category";
 }
 
-<h3>Delete @Html.DisplayFor(model => model.CategoryName)</h3>
+<h3 class="section-title">Delete @Html.DisplayFor(model => model.CategoryName)</h3>
 
 <hr />
 
@@ -36,13 +36,14 @@
         </dd>
     </dl>
 
-<p class="delete-confirm">Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</p>
+<p class="delete-confirm1"><em>Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</em></p>
+<p class="delete-confirm2">Deleting this will also delete all gloves associated with this category!</p>
 
 <form asp-action="Delete">
     <input type="submit" value="Delete" class="btn btn-danger" />
 </form>
 </div>
 <br />
-<div>
+<div class="links">
     <a asp-action="Index">Back to List</a>
 </div>
