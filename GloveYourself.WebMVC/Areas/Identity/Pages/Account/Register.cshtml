@@ -28,8 +28,20 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>*@
+
+            <div class="form-floating">
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="off" aria-required="true" />
+                <label asp-for="Input.FirstName"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.HandWidthInch" class="form-control" autocomplete="off" aria-required="true" />
+                <label asp-for="Input.HandWidthInch"></label>
+                <span asp-validation-for="Input.HandWidthInch" class="text-danger"></span>
+            </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
+        <img class="hand_image" src="https://ghheavyduty.com/wp-content/uploads/2022/08/handMeasure.jpg" alt="measuring hand width" width="100%"/>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
