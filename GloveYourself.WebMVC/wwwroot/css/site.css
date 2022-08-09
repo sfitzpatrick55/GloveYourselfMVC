@@ -23,3 +23,34 @@ body {
     flex-wrap: wrap;
     justify-content: left;
 }
+
+.navbar {
+    padding: 0.2rem;
+}
+
+.navbar-expand-sm {
+    background-image: linear-gradient(97deg, #eb297a, #fe7f41);
+}
+
+.lower-nav1 {
+    padding-top: 0;
+    max-height: 10vh;
+    background-color: #f4f4f5;
+}
+
+.company-name {
+    font-size: 2em;
+    color: #0aa5e7;
+}
+
+.footer {
+    background-color: #191b22;
+}
+
+.footer-text {
+    color: white;
+}
+
+.footer-text img {
+    height: 1.5rem;
+}
