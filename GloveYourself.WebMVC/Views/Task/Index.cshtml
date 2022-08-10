@@ -4,14 +4,12 @@
     ViewData["Title"] = "Tasks";
 }
 
-<h3>Tasks</h3>
+<h3 class="section-title">Tasks</h3>
 
 <hr />
 
-@*<p>Extra heading can go here</p>*@
-
-<div class="form-group">
-    <a class="btn btn-success" href="task/create"><i class="oi oi-plus"></i> Create New</a>
+<div class="form-group-button">
+    <a class="btn btn-success" href="task/create"><i class="oi oi-plus"></i>Create New</a>
 </div>
 <br />
 
@@ -25,8 +23,7 @@
     @foreach (var task in Model)
     {
         <div class="card-container">
-            <div class="col-sm-6">
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 16rem;">
                     <div class="card-body">
 
                         <h3 class="card-title">@task.TaskName</h3>
@@ -36,10 +33,9 @@
                         <a class="btn btn-danger" href="task/delete/@task.TaskId">Delete</a>
                         <br />
                         <br />
-                        <h6 class="card-text">Created @task.CreatedUtc.DateTime</h6>
+                        <h6 class="card-text-created"><i>Created @task.CreatedUtc.DateTime</i></h6>
                     </div>
                 </div>
-            </div>
         </div>
     }
 </div>

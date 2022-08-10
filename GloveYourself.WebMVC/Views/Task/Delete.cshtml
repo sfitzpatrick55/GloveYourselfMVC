@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete Task";
 }
 
-<h3>Delete @Html.DisplayFor(model => model.TaskName)</h3>
+<h3 class="section-title">Delete @Html.DisplayFor(model => model.TaskName)</h3>
 
 <hr />
 
@@ -30,13 +30,14 @@
         </dd>
     </dl>
 
-<p class="delete-confirm">Are you sure you want to delete @Html.DisplayFor(model => model.TaskName)?</p>
+<p><em>Are you sure you want to delete @Html.DisplayFor(model => model.TaskName)?</em></p>
+<p class="delete-confirm"><strong>Deleting this data will permanently remove all gloves associated with this task, and this cannot be recovered.</strong></p>
 
 <form asp-action="Delete">
     <input type="submit" value="Delete" class="btn btn-danger" />
 </form>
 </div>
 <br />
-<div>
+<div class="links">
     <a asp-action="Index">Back to List</a>
 </div>

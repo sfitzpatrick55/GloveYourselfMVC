@@ -4,11 +4,11 @@
     ViewData["Title"] = "Edit Category";
 }
 
-<h3>Edit @Html.DisplayFor(model => model.CategoryName)</h3>
+<h3 class="section-title">Edit @Html.DisplayFor(model => model.CategoryName)</h3>
 
 <hr />
 
-<p>Please enter new glove information below.</p>
+<p>Please enter new category information below.</p>
 
 <div class="row">
     <div class="col-md-4">
@@ -28,14 +28,14 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
+            <div class="form-group-button">
                 <input type="submit" value="Save" class="btn btn-warning" />
             </div>
         </form>
     </div>
 </div>
 <br />
-<div>
+<div class="links">
     <a asp-action="Index">Back to List</a>
 </div>
 

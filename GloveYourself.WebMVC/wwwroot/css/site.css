@@ -9,17 +9,144 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url("https://ghheavyduty.com/wp-content/uploads/2022/08/AdobeStock_222565480-scaled.jpeg");
+    background-color: white;
+    background-position-x: center;
+    background-size: cover;
+}
+
+header {
+    background-color: white;
 }
 
 .card-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: left;
+    padding: 0.5em;
+    justify-content: center;
+}
+
+.navbar {
+    padding: 0.2rem;
+}
+
+.navbar-expand-sm {
+    background-image: linear-gradient(97deg, #eb297a, #fe7f41);
+    max-height: 10vh;
+}
+
+.lower-nav1 {
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 10vh;
+    background-color: #f4f4f5;
+}
+
+.company-name {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 2.2em;
+    color: #0fcaf0;
+    margin-bottom: 0;
+    padding-left: 2rem;
+}
+
+.footer {
+    background-color: #191b22;
+}
+
+.footer-text {
+    color: white;
+    padding-left: 2rem;
+}
+
+.footer-text img {
+    height: 1.2rem;
+}
+
+.pb-3 {
+    text-align: center;
+    background-color: white;
+    opacity: 0.9;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.row {
+    justify-content: center;
+}
+
+.card {
+    border-radius: 10px;
+    border-color: darkgray;
+}
+
+.card-title {
+    color: #eb297a;
+    font-size: 1.5em;
+}
+
+.card-text-brand {
+    color: #fe7f41;
+    font-size: 1.2em;
+}
+
+.card-text-description {
+    text-align: left;
+    color: darkgray;
+    font-size: 0.8em;
+}
+
+.card-text-category {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.card-text-task {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.card-text-created {
+    font-size: 0.8em;
+    color: darkgray;
+}
+
+.control-label {
+    color: #eb297a;
+    font-size: 0.8rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.links a {
+    color: #eb297a;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: black;
+}
+
+.col-sm-10 {
+    text-align: left;
+}
+
+.col-sm-2 {
+    color: #eb297a;
+}
+
+.please-login-text {
+    color: white;
+    vertical-align: auto;
+    margin: 0;
+    padding: 0;
 }
