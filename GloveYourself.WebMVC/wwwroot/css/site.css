@@ -150,3 +150,31 @@ header {
     margin: 0;
     padding: 0;
 }
+
+.homepage-text1 {
+    margin-top: 4rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-bottom: 0;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #eb297a;
+}
+
+.homepage-text2 {
+    margin-top: 5rem;
+    margin-left: 12rem;
+    margin-right: 12rem;
+    margin-bottom: 5rem;
+    font-size: 1.2rem;
+    text-align:justify;
+}
+
+@media (max-width: 991px) {
+    .homepage-text2 {
+        margin-top: 5rem;
+        margin-left: 8rem;
+        margin-right: 8rem;
+        margin-bottom: 5rem;
+    }
+}
