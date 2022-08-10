@@ -9,12 +9,20 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url("https://ghheavyduty.com/wp-content/uploads/2022/08/AdobeStock_222565480-scaled.jpeg");
+    background-color: white;
+    background-position-x: center;
+    background-size: cover;
+}
+
+header {
+    background-color: white;
 }
 
 .card-container {
@@ -31,10 +39,12 @@ body {
 
 .navbar-expand-sm {
     background-image: linear-gradient(97deg, #eb297a, #fe7f41);
+    max-height: 10vh;
 }
 
 .lower-nav1 {
     padding-top: 0;
+    padding-bottom: 0;
     max-height: 10vh;
     background-color: #f4f4f5;
 }
@@ -43,6 +53,8 @@ body {
     font-family: 'BenchNine', sans-serif;
     font-size: 2.2em;
     color: #0fcaf0;
+    margin-bottom: 0;
+    padding-left: 2rem;
 }
 
 .footer {
@@ -51,6 +63,7 @@ body {
 
 .footer-text {
     color: white;
+    padding-left: 2rem;
 }
 
 .footer-text img {
@@ -59,7 +72,10 @@ body {
 
 .pb-3 {
     text-align: center;
-/*    color: darkgray;*/
+    background-color: white;
+    opacity: 0.9;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .row {
@@ -120,14 +136,17 @@ body {
     color: black;
 }
 
-.delete-confirm2 {
-    color: red;
-}
-
 .col-sm-10 {
     text-align: left;
 }
 
 .col-sm-2 {
     color: #eb297a;
+}
+
+.please-login-text {
+    color: white;
+    vertical-align: auto;
+    margin: 0;
+    padding: 0;
 }

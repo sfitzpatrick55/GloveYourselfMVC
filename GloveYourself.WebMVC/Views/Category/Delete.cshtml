@@ -36,8 +36,8 @@
         </dd>
     </dl>
 
-<p class="delete-confirm1"><em>Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</em></p>
-<p class="delete-confirm2">Deleting this will also delete all gloves associated with this category!</p>
+<p><em>Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</em></p>
+<p class="delete-confirm"><strong>Deleting this data will permanently remove all gloves associated with this category, and this cannot be recovered.</strong></p>
 
 <form asp-action="Delete">
     <input type="submit" value="Delete" class="btn btn-danger" />

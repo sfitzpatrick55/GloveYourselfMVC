@@ -30,8 +30,8 @@
         </dd>
     </dl>
 
-<p class="delete-confirm1"><em>Are you sure you want to delete @Html.DisplayFor(model => model.TaskName)?</em></p>
-<p class="delete-confirm2">Deleting this will also delete all gloves associated with this task!</p>
+<p><em>Are you sure you want to delete @Html.DisplayFor(model => model.TaskName)?</em></p>
+<p class="delete-confirm"><strong>Deleting this data will permanently remove all gloves associated with this task, and this cannot be recovered.</strong></p>
 
 <form asp-action="Delete">
     <input type="submit" value="Delete" class="btn btn-danger" />

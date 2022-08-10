@@ -39,8 +39,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Task" asp-action="Index">Tasks</a>
                             </li>
+                        } else {
+                        <p class="please-login-text">Please login or create an account for the full experience!</p>
                         }
-
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
