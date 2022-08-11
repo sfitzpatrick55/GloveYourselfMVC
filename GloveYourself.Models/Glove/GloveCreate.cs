@@ -25,6 +25,23 @@ namespace GloveYourself.Models.Glove
 
         [Display(Name = "Task")]
         public int TaskId { get; set; }
+
+        [Required]
+        public decimal Smin { get; set; }
+        [Required]
+        public decimal Smax { get; set; }
+        [Required]
+        public decimal Mmin { get; set; }
+        [Required]
+        public decimal Mmax { get; set; }
+        [Required]
+        public decimal Lmin { get; set; }
+        [Required]
+        public decimal Lmax { get; set; }
+        [Required]
+        public decimal XLmin { get; set; }
+        [Required]
+        public decimal XLmax { get; set; }
     }
 }
 

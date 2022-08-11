@@ -1,4 +1,5 @@
-﻿using GloveYourself.Models.Category;
+﻿using GloveYourself.Data.Models;
+using GloveYourself.Models.Category;
 using GloveYourself.Models.Glove;
 using GloveYourself.Models.Task;
 
@@ -6,7 +7,7 @@ namespace GloveYourself.Services.Glove
 {
     public interface IGloveService
     {
-        bool CreateGlove(GloveCreate model);
+        GloveEntity CreateGlove(GloveCreate model);
 
         IEnumerable<GloveListItem> GetGloves();
 

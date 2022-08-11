@@ -43,6 +43,73 @@
                 </select>
                 <span asp-validation-for="TaskId" class="text-danger"></span>
             </div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Minimum size</th>
+                    <th>Maximum size</th>
+                </tr>
+                <tr>
+                    <td>Small</td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Smin" class="form-control" />
+                            <span asp-validation-for="Smin" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Smax" class="form-control" />
+                            <span asp-validation-for="Smax" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Mmin" class="form-control" />
+                            <span asp-validation-for="Mmin" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Mmax" class="form-control" />
+                            <span asp-validation-for="Mmax" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Large</td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Lmin" class="form-control" />
+                            <span asp-validation-for="Lmin" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Lmax" class="form-control" />
+                            <span asp-validation-for="Lmax" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Xlarge</td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="XLmin" class="form-control" />
+                            <span asp-validation-for="XLmin" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="XLmax" class="form-control" />
+                            <span asp-validation-for="XLmax" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
             <br />
             <div class="form-group-button">
                 <input type="submit" value="Create" class="btn btn-success" />

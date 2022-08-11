@@ -20,7 +20,7 @@ namespace GloveYourself.Services.Glove
             _context = context;
         }
 
-        public bool CreateGlove(GloveCreate model)
+        public GloveEntity CreateGlove(GloveCreate model)
         {
             var entity = new GloveEntity()
             {
@@ -35,7 +35,23 @@ namespace GloveYourself.Services.Glove
 
             _context.Gloves.Add(entity);
 
-            return _context.SaveChanges() == 1;
+            _context.SaveChanges();
+
+            //if (_context.SaveChanges() == 1)
+            //{
+            //    var returnGlove = new GloveEntity
+            //{
+            //    GloveId = entity.GloveId,
+            //    OwnerId = _userId,
+            //    Title = model.Title,
+            //    Brand = model.Brand,
+            //    Description = model.Description,
+            //    CategoryId = model.CategoryId,
+            //    TaskId = model.TaskId,
+            //    CreatedUtc = DateTimeOffset.Now
+            //}
+
+            return entity;
         }
 
         public IEnumerable<GloveListItem> GetGloves()

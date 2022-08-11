@@ -1,11 +1,14 @@
-﻿using GloveYourself.Models.Category;
+﻿using GloveYourself.Data.Models;
+using GloveYourself.Models.Category;
 using GloveYourself.Models.Glove;
 using GloveYourself.Models.Task;
 using GloveYourself.Services.Glove;
+using GloveYourself.Services.GloveSize;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using static GloveYourself.Data.Models.SizeEnum;
 
 namespace GloveYourself.WebMVC.Controllers
 {
@@ -13,10 +16,12 @@ namespace GloveYourself.WebMVC.Controllers
     public class GloveController : Controller
     {
         private readonly IGloveService _gloveService;
+        private readonly IGloveSizeService _gloveSizeService;
 
-        public GloveController(IGloveService gloveService)
+        public GloveController(IGloveService gloveService, IGloveSizeService gloveSizeService)
         {
             _gloveService = gloveService;
+            _gloveSizeService = gloveSizeService;
         }
 
         //
@@ -53,7 +58,14 @@ namespace GloveYourself.WebMVC.Controllers
 
             ViewBag.TaskSelectList = new SelectList(GetTaskDropDownList(), "TaskId", "TaskName");
 
-            if (_gloveService.CreateGlove(model))
+            //if (_gloveService.CreateGlove(model))
+            var newGlove = _gloveService.CreateGlove(model);
+
+            _gloveSizeService.AddGloveSize(new { newGlove.GloveId, Size.Small, model.Smin, model.Smax });
+            _gloveSizeService.AddGloveSize(new { newGlove.GloveId, Size.Medium, model.Mmin, model.Mmax });
+            _gloveSizeService.AddGloveSize(new { newGlove.GloveId, Size.Large, model.Lmin, model.Lmax });
+            _gloveSizeService.AddGloveSize(new { newGlove.GloveId, Size.XLarge, model.XLmin, model.XLmax });
+
             {
                 TempData["SaveResult"] = "Your glove was successfully created.";
                 return RedirectToAction("Index");

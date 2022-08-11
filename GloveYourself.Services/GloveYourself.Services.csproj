@@ -17,6 +17,7 @@
     <None Remove="Glove %28copy%29\" />
     <None Remove="Task\" />
     <None Remove="SeedData\" />
+    <None Remove="GloveSize\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
@@ -37,6 +38,7 @@
     <Folder Include="Category\" />
     <Folder Include="Task\" />
     <Folder Include="SeedData\" />
+    <Folder Include="GloveSize\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GloveYourself.Models\GloveYourself.Models.csproj" />
